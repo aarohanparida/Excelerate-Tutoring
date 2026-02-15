@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | Excelerate Tutoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="max-width">
+        <div class="logo">
+            <a href="home.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
+        </div>
+        <ul class="menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="tutors.html">Meet The Tutors</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="active"><a href="register.html">Register</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="register-hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Register</h1>
+        <p>Sign up for free tutoring today</p>
+        <div class="scroll-hint">Scroll down to begin ↓</div>
+    </div>
+</section>
+
+<!-- FORM SECTION -->
+<section class="register-section">
+    <div class="form-card">
+        <h2>Student Registration</h2>
+
+        <form id="registerForm">
+
+            <div class="field">
+                <label>Parent Name</label>
+                <input type="text" id="parentName" required>
+            </div>
+
+            <div class="field">
+                <label>Parent Email</label>
+                <input type="email" id="parentEmail" required>
+            </div>
+
+            <div class="field">
+                <label>Parent Phone Number</label>
+                <input type="tel" id="parentPhone" required>
+            </div>
+
+            <div class="field">
+                <label>Student Name</label>
+                <input type="text" id="studentName" required>
+            </div>
+
+            <div class="field">
+                <label>Course(s)</label>
+                <select id="courses" multiple required>
+                    <option>Extemporaneous Speech</option>
+                    <option>Economics & Finance</option>
+                    <option>Geometry</option>
+                    <option>Algebra 1</option>
+                    <option>Pre‑Algebra</option>
+                    <option>Math 1</option>
+                    <option>Math 7</option>
+                    <option>Math 2</option>
+                    <option>Math 3</option>
+                    <option>Math 4</option>
+                    <option>Math 5</option>
+                    <option>Math 6</option>
+                    <option>Basics of Writing</option>
+                    <option>SBAC Prep — Math</option>
+                    <option>SBAC Reading</option>
+                    <option>How to Use AI Safely</option>
+                    <option>Study Methods</option>
+                    <option>Web Design 1</option>
+                    <option>Web Design 2</option>
+                    <option>Python Intro Basics</option>
+                    <option>Homework Help</option>
+                    <option>Competition Math (Grades 6–8)</option>
+                </select>
+                <p class="note">Hold CTRL (Windows) or CMD (Mac) to select multiple</p>
+            </div>
+
+            <div class="field">
+                <label>Preferred Teacher(s)</label>
+                <select id="teachers" multiple>
+                    <option>Aarohan</option>
+                    <option>Teacher 2</option>
+                    <option>Teacher 3</option>
+                    <option>Any Available</option>
+                </select>
+                <p class="note">Optional — choose multiple if needed</p>
+            </div>
+
+            <div class="field">
+                <label>Available Days</label>
+                <div class="days">
+                    <label><input type="checkbox" value="Monday"> Monday</label>
+                    <label><input type="checkbox" value="Tuesday"> Tuesday</label>
+                    <label><input type="checkbox" value="Wednesday"> Wednesday</label>
+                    <label><input type="checkbox" value="Thursday"> Thursday</label>
+                    <label><input type="checkbox" value="Friday"> Friday</label>
+                    <label><input type="checkbox" value="Saturday"> Saturday</label>
+                    <label><input type="checkbox" value="Sunday"> Sunday</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Registration</button>
+        </form>
+    </div>
+</section>
+
+<!-- POPUP -->
+<div id="register-popup" class="popup">
+    <div class="popup-content">
+        <span id="popup-close">&times;</span>
+        <p>Thank you! Your registration has been submitted. We will contact you within 24 hours.</p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="row">
+        <div class="col">
+            <ul>
+                <li>
+                    <div class="logo">
+                        <a href="home.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
+                    </div>
+                </li>
+                <li>
+                    <p>Your Path to Academic Excellence for FREE</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="tutors.html">Meet The Tutors</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <ul>
+                <li>(123)-456-789</li>
+                <li>exceleratetutoring13@gmail.com</li>
+                <li>South Windsor, CT, 06074</li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <ul>
+                <li><a href="https://www.facebook.com/profile.php?id=61587083892737"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/exceleratetutoring"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <p>Website made by Aarohan Parida</p>
+    <p>2026 Excelerate Tutoring. All rights reserved.</p>
+</div>
+
+<script src="register.js"></script>
+</body>
+</html>

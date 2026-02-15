@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Donegal+One&display=swap');
+
+body {
+    background-color: lightsalmon;
+    font-family: 'Donegal One', cursive;
+}
+
+.navbar {
+    background: transparent;
+    transition:
+        background-color 0.35s ease,
+        box-shadow 0.35s ease,
+        padding 0.35s ease;
+}
+
+.navbar.sticky {
+    background: #fff;
+    border-radius: 18px;
+    padding: 8px 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* FULLSCREEN HERO */
+.courses-hero {
+    height: 100vh;
+    background: url("background.jpg") center / cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.courses-hero .hero-content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+}
+
+.courses-hero h1 {
+    font-size: 72px;
+    margin-bottom: 10px;
+}
+
+.courses-hero p {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.scroll-hint {
+    font-size: 18px;
+    color: #fff;
+    opacity: 0.85;
+    animation: hintFloat 2s ease-in-out infinite;
+}
+
+@keyframes hintFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+/* SECTION TITLE */
+.section-title {
+    text-align: center;
+    font-size: 42px;
+    color: lightcoral;
+    margin-bottom: 40px;
+}
+
+/* GRID */
+.courses-section {
+    padding: 120px 0;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.course-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 22px;
+    color: #446B50;
+    font-weight: bold;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.5s ease;
+}
+
+.course-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.course-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 22px;
+    color: #446B50;
+    font-weight: bold;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.45s ease;
+    cursor: pointer;
+}
+
+/* When visible */
+.course-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.course-details {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #64A587;
+    line-height: 1.5;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.course-details.open {
+    display: block;
+    opacity: 1;
+}

@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Donegal+One&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: lightsalmon;
+}
+
+.max-width {
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+.navbar{
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    width: calc(100% - 40px);
+    transform: translateX(-50%) translateY(0);
+
+    padding: 10px 0;
+    background: transparent;
+
+    transition:
+        transform 0.35s ease,
+        background-color 0.35s ease,
+        border-radius 0.35s ease,
+        box-shadow 0.35s ease,
+        padding 0.35s ease;
+
+    z-index: 10000;
+
+}
+
+.navbar.sticky{
+    padding: 10px 0;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    background: #fff;
+    border-radius: 18px;
+    padding: 8px 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.navbar .max-width {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .menu li a {
+    position: relative;
+}
+
+.navbar .menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #446B50;
+    transition: width 0.3s ease;
+}
+
+.navbar .menu li a:hover::after {
+    width: 100%;
+}
+
+.navbar .menu li.active a {
+    border-bottom: 3px solid #446B50;
+    padding-bottom: 5px;
+}
+
+.navbar .menu li {
+    list-style: none;
+    display: inline-block;
+}
+
+.navbar .logo img {
+    width: 250px;
+    height: auto;
+}
+
+.navbar .menu li a {
+    color: #446B50;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+}
+
+.menu-btn {
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+}
+
+.home {
+    display: flex;
+    background: url("background.jpg") no-repeat center;
+    height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #ffffff;
+    min-height: 500px;
+    font-family: 'Donegal One', cursive;
+    
+}
+
+.home .max-width {
+    margin: auto 0 auto 40px;
+}
+
+.home .home-content .text-1 {
+    font-size: 57px;
+    font-weight: bold;
+    color: lightcoral;
+}
+
+.home .home-content .text-2 .logo-2 {
+    width: 500px;
+    height: auto;
+}
+
+.home .home-content .text-3 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #64A587;
+}
+
+.home .home-content .text-3 span {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #446B50;
+}
+
+.home .home-content a {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #446B50;
+    color: rgb(236, 126, 110);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 28px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-bottom-left-radius: 0px;
+    transition: border-bottom-left-radius 0.3s ease;
+}
+
+.home .home-content a:hover {
+    background-color: #64A587;
+    color: #fff;
+    border-bottom-left-radius: 8px;
+}
+
+.home .home-content a {
+    box-shadow: 0 10px 25px rgba(236, 126, 110, 0.35);
+    transition: all 0.3s ease;
+}
+
+.home .home-content a:hover {
+    transform: translateY(-2px);
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+.home {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.home {
+    background: url("background.jpg") center / cover no-repeat;
+}
+
+.hero-graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    transform: translateY(0);
+}
+
+.home .max-width {
+    position: relative;
+    z-index: 3;
+}
+
+.home-content,
+.graphic {
+    will-change: transform, opacity;
+}
+
+.about {
+    padding: 100px 0;
+    background-color: #010101;
+    color: #333;
+    font-family: 'Donegal One', cursive;
+}
+
+.about .max-width {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-content {
+    max-width: 900px;
+    text-align: center;
+    animation: fadeUp 1s ease forwards;
+}
+
+.about-content .text-1 {
+    font-size: 42px;
+    font-weight: bold;
+    color: lightcoral;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 20px;
+    line-height: 1.7;
+    color: lightsalmon;
+    margin-bottom: 30px;
+}
+
+.about-content .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #446B50;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.about-content .btn:hover {
+    background-color: palegoldenrod;
+    color: #333;
+}
+
+.stats {
+    padding: 60px 0 120px; /* less top padding, same bottom padding */
+    background-color: #446B50;
+    font-family: 'Donegal One', cursive;
+    text-align: center;
+    position: relative;  /* allows z-index + parallax movement */
+    z-index: 5;          /* above About section */
+}
+
+.stats-content {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+    color: lightcoral;
+    will-change: transform; /* smooth GPU animation */
+    opacity: 0;
+    transition: opacity 0.25s linear;
+}
+
+.stats-content .number {
+    font-size: 100px;
+    font-weight: bold;
+    color: lightsalmon;
+    margin-bottom: 20px;
+}
+
+.stats-content .label {
+    font-size: 36px;
+    color: lightcoral;
+}
+.scroll-fade-up {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.scroll-fade-up.show {
+    animation: fadeUp 0.9s ease-out forwards;
+}
+
+.about-btn {
+    display: inline-block;
+    margin-bottom: 100px; /* adds space between button and next section */
+}
+
+.contact-cta {
+    padding: 200px 0;
+    padding-top: 200px;
+    background-color: lightsalmon;
+    font-family: 'Donegal One', cursive;
+    text-align: center;
+    color: #64A587;
+}
+
+.contact-content h2 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.contact-content p {
+    font-size: 22px;
+    margin-bottom: 40px;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: lightcoral;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: rgb(236, 126, 110);
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+    background-image: linear-gradient(90deg, #fff, #64A587);
+    padding: 50px 5% 20px; /* bottom padding = wave height */
+    text-align: center;
+    color: #010101;
+    font-family: 'Donegal One', cursive;
+    overflow: hidden;
+}
+
+.footer a {
+    color: #010101;
+    text-decoration: none;
+}
+
+.footer .logo img {
+    width: 300px;
+    height: auto;
+    margin: 22px 0;
+}
+
+.footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.footer .col {
+    margin: 20px;
+}
+
+.footer .col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer .col ul li {
+    margin: 10px 0;
+}
+
+/* ABOUT (black section) */
+.about {
+    position: relative;
+    z-index: 1;
+}
+
+/* STATS (green section coming over it) */
+.stats {
+    position: relative;
+    z-index: 5;
+    will-change: transform;
+}
