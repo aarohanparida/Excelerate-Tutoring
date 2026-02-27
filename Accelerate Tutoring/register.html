@@ -17,10 +17,10 @@
 <nav class="navbar">
     <div class="max-width">
         <div class="logo">
-            <a href="home.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
+            <a href="index.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
         </div>
         <ul class="menu">
-            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="courses.html">Courses</a></li>
             <li><a href="tutors.html">Meet The Tutors</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -44,78 +44,118 @@
     <div class="form-card">
         <h2>Student Registration</h2>
 
-        <form id="registerForm">
+        <!-- Web3Forms POST action; replace ACCESS_KEY placeholder with your actual key -->
+        <form id="registerForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" id="access_key" value="11cd3106-c577-4cdf-bd14-774e7ea92e9e">
 
-            <div class="field">
-                <label>Parent Name</label>
-                <input type="text" id="parentName" required>
+            <div class="form-group">
+                <h3>Parent / Guardian</h3>
             </div>
 
             <div class="field">
-                <label>Parent Email</label>
-                <input type="email" id="parentEmail" required>
+                <label for="parentName">Parent Name</label>
+                <input type="text" id="parentName" name="parentName" placeholder="e.g. Jane Smith" required autofocus>
             </div>
 
             <div class="field">
-                <label>Parent Phone Number</label>
-                <input type="tel" id="parentPhone" required>
+                <label for="parentEmail">Parent Email</label>
+                <input type="email" id="parentEmail" name="parentEmail" placeholder="your@email.com" required>
             </div>
 
             <div class="field">
-                <label>Student Name</label>
-                <input type="text" id="studentName" required>
+                <label for="parentPhone">Parent Phone Number</label>
+                <input type="tel" id="parentPhone" name="parentPhone" placeholder="(123) 456-7890" pattern="[0-9()\s+-]{7,20}" required>
+                <p class="error" id="phoneError" aria-live="polite"></p>
+            </div>
+
+            <div class="form-group">
+                <h3>Student</h3>
             </div>
 
             <div class="field">
-                <label>Course(s)</label>
-                <select id="courses" multiple required>
-                    <option>Extemporaneous Speech</option>
-                    <option>Economics & Finance</option>
-                    <option>Geometry</option>
-                    <option>Algebra 1</option>
-                    <option>Pre‑Algebra</option>
-                    <option>Math 1</option>
-                    <option>Math 7</option>
-                    <option>Math 2</option>
-                    <option>Math 3</option>
-                    <option>Math 4</option>
-                    <option>Math 5</option>
-                    <option>Math 6</option>
-                    <option>Basics of Writing</option>
-                    <option>SBAC Prep — Math</option>
-                    <option>SBAC Reading</option>
-                    <option>How to Use AI Safely</option>
-                    <option>Study Methods</option>
-                    <option>Web Design 1</option>
-                    <option>Web Design 2</option>
-                    <option>Python Intro Basics</option>
-                    <option>Homework Help</option>
-                    <option>Competition Math (Grades 6–8)</option>
-                </select>
-                <p class="note">Hold CTRL (Windows) or CMD (Mac) to select multiple</p>
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName" name="studentName" placeholder="e.g. John Smith" required>
             </div>
 
             <div class="field">
-                <label>Preferred Teacher(s)</label>
-                <select id="teachers" multiple>
-                    <option>Aarohan</option>
-                    <option>Teacher 2</option>
-                    <option>Teacher 3</option>
-                    <option>Any Available</option>
-                </select>
+                <label for="courseSearch">Course(s)</label>
+                <div class="searchable-multiselect">
+                    <input type="search" id="courseSearch" placeholder="Search courses..." aria-label="Search courses">
+                    <div class="options-list" id="coursesList">
+                        <label><input type="checkbox" name="courses[]" value="Extemporaneous Speech"> Extemporaneous Speech</label>
+                        <label><input type="checkbox" name="courses[]" value="Economics & Finance"> Economics & Finance</label>
+                        <label><input type="checkbox" name="courses[]" value="Geometry"> Geometry</label>
+                        <label><input type="checkbox" name="courses[]" value="Algebra 1"> Algebra 1</label>
+                        <label><input type="checkbox" name="courses[]" value="Pre‑Algebra"> Pre‑Algebra</label>
+                        <label><input type="checkbox" name="courses[]" value="Math 1"> Math 1</label>
+                        <label><input type="checkbox" name="courses[]" value="Math 7"> Math 7</label>
+                        <label><input type="checkbox" name="courses[]" value="Math 2"> Math 2</label>
+                        <label><input type="checkbox" name="courses[]" value="Math 3"> Math 3</label>
+                        <label><input type="checkbox" name="courses[]" value="Math 4"> Math 4</label>
+                        <label><input type="checkbox" name="courses[]" value="Math 5"> Math 5</label>
+                        <label><input type="checkbox" name="courses[]" value="Math 6"> Math 6</label>
+                        <label><input type="checkbox" name="courses[]" value="Basics of Writing"> Basics of Writing</label>
+                        <label><input type="checkbox" name="courses[]" value="SBAC Prep — Math"> SBAC Prep — Math</label>
+                        <label><input type="checkbox" name="courses[]" value="SBAC Reading"> SBAC Reading</label>
+                        <label><input type="checkbox" name="courses[]" value="How to Use AI Safely"> How to Use AI Safely</label>
+                        <label><input type="checkbox" name="courses[]" value="Study Methods"> Study Methods</label>
+                        <label><input type="checkbox" name="courses[]" value="Web Design 1"> Web Design 1</label>
+                        <label><input type="checkbox" name="courses[]" value="Web Design 2"> Web Design 2</label>
+                        <label><input type="checkbox" name="courses[]" value="Python Intro Basics"> Python Intro Basics</label>
+                        <label><input type="checkbox" name="courses[]" value="Homework Help"> Homework Help</label>
+                        <label><input type="checkbox" name="courses[]" value="Competition Math (Grades 6–8)"> Competition Math (Grades 6–8)</label>
+                    </div>
+                </div>
+                <p class="note small">Selected: <span id="coursesCount">0</span></p>
+                <p class="error" id="coursesError" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+                <label for="teacherSearch">Preferred Teacher(s)</label>
+                <div class="searchable-multiselect">
+                    <input type="search" id="teacherSearch" placeholder="Search teachers..." aria-label="Search teachers">
+                    <div class="options-list" id="teachersList">
+                        <label><input type="checkbox" name="teachers[]" value="Any Available"> Any Available</label>
+                        <label><input type="checkbox" name="teachers[]" value="Aarohan Parida"> Aarohan Parida</label>
+                        <label><input type="checkbox" name="teachers[]" value="David Biju"> David Biju</label>
+                        <label><input type="checkbox" name="teachers[]" value="Justin"> Justin Jin</label>
+                        <label><input type="checkbox" name="teachers[]" value="Vedanth Manchala"> Vedanth Manchala</label>
+                        <label><input type="checkbox" name="teachers[]" value="Daniel Zhang"> Daniel Zhang</label>
+                        <label><input type="checkbox" name="teachers[]" value="Nibha Bala Gowda"> Nibha Bala Gowda</label>
+                        <label><input type="checkbox" name="teachers[]" value="Durvaank Patel"> Durvaank Patel</label>
+                        <label><input type="checkbox" name="teachers[]" value="Saanvi Nigam"> Saanvi Nigam</label>
+                        <label><input type="checkbox" name="teachers[]" value="Nikolay Gakev"> Nikolay Gakev</label>
+                        <label><input type="checkbox" name="teachers[]" value="Kahi Dinesh Rajan Pavithra"> Kahinisri Dinesh Rajan Pavithra</label>
+                        <label><input type="checkbox" name="teachers[]" value="Aarshabh Pattanayak"> Aarshabh Pattanayak</label>
+                        <label><input type="checkbox" name="teachers[]" value="Shaunak Tamhane"> Shaunak Tamhane</label>
+                        <label><input type="checkbox" name="teachers[]" value="Varshini Abirami Bhaskar"> Varshini Abirami Bhaskar</label>
+                        <label><input type="checkbox" name="teachers[]" value="Pratyaksha Yadav"> Pratyaksha Yadav</label>
+                        <label><input type="checkbox" name="teachers[]" value="Sameeksha Sajjana"> Sameeksha Sajjana</label>
+                        <label><input type="checkbox" name="teachers[]" value="Eshika Hanumanthkar"> Eshika Hanumanthkar</label>
+                        <label><input type="checkbox" name="teachers[]" value="Brady Xu"> Brady Xu</label>
+                        <label><input type="checkbox" name="teachers[]" value="Arnav Malpure"> Arnav Malpure</label>
+                        <label><input type="checkbox" name="teachers[]" value="Corinne Rich"> Corinne Rich</label>
+                        <label><input type="checkbox" name="teachers[]" value="Suri Nguyen"> Suri Nguyen</label>
+                        <label><input type="checkbox" name="teachers[]" value="Olivia Dziadul"> Olivia Dziadul</label>
+                        <label><input type="checkbox" name="teachers[]" value="Armaan Qureshi"> Armaan Qureshi</label>
+                        <label><input type="checkbox" name="teachers[]" value="Cooper Sweeney"> Cooper Sweeney</label>
+                        <label><input type="checkbox" name="teachers[]" value="Jai Gundapwar"> Jai Gundapwar</label>
+                    </div>
+                </div>
                 <p class="note">Optional — choose multiple if needed</p>
+                <p class="note small">Selected: <span id="teachersCount">0</span></p>
             </div>
 
             <div class="field">
                 <label>Available Days</label>
                 <div class="days">
-                    <label><input type="checkbox" value="Monday"> Monday</label>
-                    <label><input type="checkbox" value="Tuesday"> Tuesday</label>
-                    <label><input type="checkbox" value="Wednesday"> Wednesday</label>
-                    <label><input type="checkbox" value="Thursday"> Thursday</label>
-                    <label><input type="checkbox" value="Friday"> Friday</label>
-                    <label><input type="checkbox" value="Saturday"> Saturday</label>
-                    <label><input type="checkbox" value="Sunday"> Sunday</label>
+                    <label><input type="checkbox" name="days" value="Monday"> Monday</label>
+                    <label><input type="checkbox" name="days" value="Tuesday"> Tuesday</label>
+                    <label><input type="checkbox" name="days" value="Wednesday"> Wednesday</label>
+                    <label><input type="checkbox" name="days" value="Thursday"> Thursday</label>
+                    <label><input type="checkbox" name="days" value="Friday"> Friday</label>
+                    <label><input type="checkbox" name="days" value="Saturday"> Saturday</label>
+                    <label><input type="checkbox" name="days" value="Sunday"> Sunday</label>
                 </div>
             </div>
 
@@ -139,7 +179,7 @@
             <ul>
                 <li>
                     <div class="logo">
-                        <a href="home.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
+                        <a href="index.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
                     </div>
                 </li>
                 <li>
@@ -150,7 +190,7 @@
 
         <div class="col">
             <ul>
-                <li><a href="home.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="courses.html">Courses</a></li>
                 <li><a href="tutors.html">Meet The Tutors</a></li>
                 <li><a href="contact.html">Contact</a></li>

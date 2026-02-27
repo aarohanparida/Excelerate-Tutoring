@@ -92,4 +92,15 @@ $(document).ready(function () {
 
         statsContent.css("opacity", progress);
     });
+
+    /* ===================== GENERIC PARALLAX FOR ANY SECTION ===================== */
+    $(window).on("scroll", function () {
+        const scrollY = window.scrollY;
+        $(".parallax").each(function () {
+            const sec = $(this);
+            const offset = sec.offset().top;
+            const relative = scrollY - offset;
+            sec.css("background-position", `center ${relative * 0.25}px`);
+        });
+    });
 });

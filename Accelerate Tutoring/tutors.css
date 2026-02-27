@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Donegal+One&display=swap');
+
+body {
+    background-color: lightsalmon;
+    font-family: 'Donegal One', cursive;
+}
+
+.navbar {
+    background: transparent;
+    transition:
+        background-color 0.35s ease,
+        box-shadow 0.35s ease,
+        padding 0.35s ease;
+}
+
+.navbar.sticky {
+    background: #fff;
+    border-radius: 18px;
+    padding: 8px 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* FULLSCREEN HERO */
+.tutors-hero {
+    height: 100vh;
+    background: url("background.jpg") center / cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* dark overlay for better text contrast */
+
+.tutors-hero .hero-content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+}
+
+.tutors-hero h1 {
+    font-size: 72px;
+    margin-bottom: 10px;
+}
+
+.tutors-hero p {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.scroll-hint {
+    font-size: 18px;
+    color: #fff;
+    opacity: 0.85;
+    animation: hintFloat 2s ease-in-out infinite;
+}
+
+    /* Make card layout vertical and reserve space for a paragraph-length bio */
+    .tutor-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: left;
+    }
+
+    .tutor-details {
+        margin-top: 14px;
+        font-size: 16px;
+        color: #4a6f5a;
+        line-height: 1.6;
+        display: block;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+        width: 100%;
+        max-width: 520px;
+        min-height: 72px; /* reserve space for a paragraph */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tutor-details p {
+        margin: 0;
+    }
+
+    .tutor-details.open {
+        /* kept for backward compatibility with JS toggles */
+        display: block;
+        opacity: 1;
+    }
+.tutors-section {
+    padding: 120px 0;
+}
+
+.tutors-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* one tutor per row */
+    gap: 20px;
+}
+
+.tutor-card {
+    background: #fff;
+    padding: 18px 20px;
+    border-radius: 14px;
+    text-align: left;
+    font-size: 16px; /* smaller overall font */
+    color: #446B50;
+    font-weight: 500;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.45s ease;
+    cursor: default;
+}
+
+.tutor-row {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.tutor-info {
+    flex: 1;
+}
+
+.tutor-info h3 {
+    margin: 0 0 6px 0;
+    font-size: 20px;
+}
+
+.bio {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4a6f5a;
+}
+
+/* Photo inside card */
+.tutor-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 999px;
+    display: block;
+    margin: 0;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* When visible */
+.tutor-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tutor-details {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #64A587;
+    line-height: 1.5;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tutor-details.open {
+    display: block;
+    opacity: 1;
+}
+
+/* Responsive: stack photo above info on small screens */
+@media (max-width: 720px) {
+    .tutor-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .tutor-info {
+        width: 100%;
+    }
+    .tutor-photo {
+        width: 100px;
+        height: 100px;
+    }
+    .tutor-info h3 { text-align: center; }
+    .subjects { text-align: center; }
+    .bio { text-align: center; }
+}
