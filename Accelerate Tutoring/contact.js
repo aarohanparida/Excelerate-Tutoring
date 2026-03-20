@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
-    /* STICKY NAVBAR */
+    /* STICKY NAVBAR — disabled on mobile, always sticky there */
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return;
         if (window.scrollY > 20) {
             $(".navbar").addClass("sticky");
         } else {
@@ -42,9 +43,10 @@ $(document).ready(function () {
     setupMobileMenu();
     $(window).on('resize', setupMobileMenu);
 
-    /* PARALLAX HERO */
+    /* PARALLAX HERO — disabled on mobile */
     const hero = $(".contact-hero");
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return; // disabled on mobile
         const scrollTop = window.scrollY;
         hero.css("background-position", `center ${scrollTop * 0.35}px`);
     });
@@ -55,11 +57,9 @@ $(document).ready(function () {
     const submitBtn = $("#submitBtn");
     const contactForm = $("#contactForm");
 
-    // Form submission with validation
     contactForm.on("submit", function (e) {
         e.preventDefault();
 
-        // clear previous errors
         $(".error").text('');
 
         const name = $("#contactName").val().trim();
@@ -68,27 +68,23 @@ $(document).ready(function () {
 
         let valid = true;
 
-        // validate name
         if (!name || name.length < 2) {
             $("#nameError").text('Please enter a valid name.');
             valid = false;
         }
 
-        // validate email
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
             $("#emailError").text('Please enter a valid email address.');
             valid = false;
         }
 
-        // validate message
         if (!message || message.length < 5) {
             $("#messageError").text('Please enter a message (at least 5 characters).');
             valid = false;
         }
 
         if (!valid) {
-            // focus first error field
             const firstErr = $(".error").filter(function() { return $(this).text().length > 0; }).first();
             if (firstErr.length) {
                 const related = firstErr.prevAll('input,textarea').first();
@@ -97,11 +93,9 @@ $(document).ready(function () {
             return;
         }
 
-        // form is valid: submit to Web3Forms
         submitBtn.prop('disabled', true).addClass('loading');
         submitBtn.text('Sending...');
 
-        // Use fetch to submit form and show success popup
         const formData = new FormData(contactForm[0]);
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',

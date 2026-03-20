@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     /* ===================== STICKY NAVBAR ===================== */
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return;
         if (window.scrollY > 20) {
             $(".navbar").addClass("sticky");
         } else {
@@ -49,7 +50,7 @@ $(document).ready(function () {
 
     if (homeHero.length) {
         $(window).on("scroll", function () {
-            if (window.innerWidth <= 992) return;
+            if (window.innerWidth <= 992) return; // disabled on mobile
 
             const scrollY = window.scrollY;
 
@@ -96,6 +97,7 @@ $(document).ready(function () {
     $(window).on("scroll", function () {
         const stats = $(".stats");
         if (!stats.length) return;
+        if (window.innerWidth <= 992) return; // disabled on mobile
 
         const scrollY = window.scrollY;
         const statsTop = stats.offset().top;
@@ -107,8 +109,7 @@ $(document).ready(function () {
         let progress = (scrollY - triggerStart) / (triggerEnd - triggerStart);
         progress = Math.max(0, Math.min(1, progress));
 
-        // NEGATIVE = moves UP over black section
-        const offset = -120 * progress; 
+        const offset = -120 * progress;
         stats.css("transform", `translateY(${offset}px)`);
     });
 
@@ -147,6 +148,8 @@ $(document).ready(function () {
 
     /* ===================== GENERIC PARALLAX FOR ANY SECTION ===================== */
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return; // disabled on mobile
+
         const scrollY = window.scrollY;
         $(".parallax").each(function () {
             const sec = $(this);

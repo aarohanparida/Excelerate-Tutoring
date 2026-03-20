@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
-    /* STICKY NAVBAR */
+    /* STICKY NAVBAR — disabled on mobile, always sticky there */
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return;
         if (window.scrollY > 20) {
             $(".navbar").addClass("sticky");
         } else {
@@ -9,9 +10,10 @@ $(document).ready(function () {
         }
     });
 
-    /* PARALLAX HERO */
+    /* PARALLAX HERO — disabled on mobile */
     const hero = $(".register-hero");
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return; // disabled on mobile
         const scrollTop = window.scrollY;
         hero.css("background-position", `center ${scrollTop * 0.35}px`);
     });
@@ -53,7 +55,6 @@ $(document).ready(function () {
     const popup = $("#register-popup");
     const closeBtn = $("#popup-close");
 
-    // helper: update selected counts for courses (checkbox list) and for selects
     function updateCountFor(selector, countId) {
         let count = 0;
         const el = $(selector);
@@ -65,16 +66,12 @@ $(document).ready(function () {
         $(`#${countId}`).text(count);
     }
 
-    // initialize counts
     updateCountFor('#coursesList', 'coursesCount');
     updateCountFor('#teachersList', 'teachersCount');
 
-    // courses: checkboxes inside #coursesList
     $(document).on('change', "#coursesList input[type='checkbox']", function () { updateCountFor('#coursesList', 'coursesCount'); });
-    // teachers: checkboxes inside #teachersList
     $(document).on('change', "#teachersList input[type='checkbox']", function () { updateCountFor('#teachersList', 'teachersCount'); });
 
-    // searchable filter for courses
     $("#courseSearch").on('input', function () {
         const q = $(this).val().toLowerCase().trim();
         $("#coursesList label").each(function () {
@@ -87,7 +84,6 @@ $(document).ready(function () {
         });
     });
 
-    // searchable filter for teachers
     $("#teacherSearch").on('input', function () {
         const q = $(this).val().toLowerCase().trim();
         $("#teachersList label").each(function () {
@@ -103,7 +99,6 @@ $(document).ready(function () {
     $("#registerForm").on("submit", function (e) {
         e.preventDefault();
 
-        // clear previous errors
         $(".error").text('');
 
         const phone = $("#parentPhone").val().trim();
@@ -111,7 +106,6 @@ $(document).ready(function () {
 
         let valid = true;
 
-        // basic phone validation (digits, spaces, parentheses, +, - allowed)
         const phonePattern = /^[0-9()\s+\-]{7,20}$/;
         if (!phonePattern.test(phone)) {
             $("#phoneError").text('Please enter a valid phone number.');
@@ -124,7 +118,6 @@ $(document).ready(function () {
         }
 
         if (!valid) {
-            // focus first visible error (special-case courses)
             const firstErr = $('.error').filter(function(){ return $(this).text().length>0; }).first();
             if (firstErr.length) {
                 if (firstErr.attr('id') === 'coursesError') {
@@ -137,7 +130,6 @@ $(document).ready(function () {
             return;
         }
 
-        // prepare form data for Web3Forms
         const formEl = this;
         const formData = new FormData(formEl);
 
@@ -150,7 +142,6 @@ $(document).ready(function () {
             if (data.success) {
                 popup.css("display", "flex");
                 formEl.reset();
-                // clear any filtering and update counts
                 $('#courseSearch').val('');
                 $('#coursesList label').removeClass('hidden');
                 updateCountFor('#coursesList', 'coursesCount');
@@ -187,14 +178,12 @@ $(document).ready(function () {
 
         registerLinks.on("click", function (e) {
             e.preventDefault();
-            // Refresh to force top of register page when already on register.html
             window.location.href = "register.html";
         });
     }
 
     enforceRegisterLinks();
 
-    // Make sure any current register page loads from top
     if (window.location.pathname.replace(/.*\//, "") === "register.html") {
         window.scrollTo(0, 0);
     }

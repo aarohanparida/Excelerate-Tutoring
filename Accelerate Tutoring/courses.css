@@ -136,3 +136,30 @@ body {
     opacity: 1;
     margin-top: 15px;
 }
+
+/* RESPONSIVE GRID */
+@media (max-width: 992px) {
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .courses-hero h1 { font-size: 54px; }
+    .courses-hero p { font-size: 20px; }
+    .section-title { font-size: 32px; }
+    .course-card { font-size: 18px; padding: 22px; }
+    .courses-section { padding: 80px 0; }
+}
+
+@media (max-width: 576px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .courses-hero h1 { font-size: 40px; }
+    .courses-hero p { font-size: 16px; }
+    .section-title { font-size: 28px; }
+    .course-card { font-size: 16px; padding: 18px; }
+    .courses-section { padding: 60px 0; }
+}

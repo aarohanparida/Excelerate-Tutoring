@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
-    /* STICKY NAVBAR */
+    /* STICKY NAVBAR — disabled on mobile, always sticky there */
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return;
         if (window.scrollY > 20) {
             $(".navbar").addClass("sticky");
         } else {
@@ -42,9 +43,10 @@ $(document).ready(function () {
     setupMobileMenu();
     $(window).on('resize', setupMobileMenu);
 
-    /* PARALLAX HERO */
+    /* PARALLAX HERO — disabled on mobile */
     const hero = $(".tutors-hero");
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return; // disabled on mobile
         const scrollTop = window.scrollY;
         hero.css("background-position", `center ${scrollTop * 0.35}px`);
     });

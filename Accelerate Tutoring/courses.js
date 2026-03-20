@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
-    /* STICKY NAVBAR */
+    /* STICKY NAVBAR — disabled on mobile, always sticky there */
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return;
         if (window.scrollY > 20) {
             $(".navbar").addClass("sticky");
         } else {
@@ -42,9 +43,10 @@ $(document).ready(function () {
     setupMobileMenu();
     $(window).on('resize', setupMobileMenu);
 
-    /* PARALLAX HERO */
+    /* PARALLAX HERO — disabled on mobile */
     const hero = $(".courses-hero");
     $(window).on("scroll", function () {
+        if (window.innerWidth <= 992) return; // disabled on mobile
         const scrollTop = window.scrollY;
         hero.css("background-position", `center ${scrollTop * 0.35}px`);
     });
@@ -55,27 +57,21 @@ $(document).ready(function () {
             const rect = this.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
-            // When card enters viewport → fade in
             if (rect.top < windowHeight * 0.85 && rect.bottom > 0) {
                 $(this).addClass("show");
-            } 
-            // When card leaves viewport (scrolling up) → fade out
-            else {
+            } else {
                 $(this).removeClass("show");
             }
         });
     }
 
     $(window).on("scroll", animateCards);
-    animateCards(); // run on load
+    animateCards();
 
     /* CLICK TO EXPAND */
     $(".course-card").on("click", function () {
         const details = $(this).find(".course-details");
-
-        // Optional: collapse all others
         $(".course-details").not(details).removeClass("open");
-
         details.toggleClass("open");
     });
 
