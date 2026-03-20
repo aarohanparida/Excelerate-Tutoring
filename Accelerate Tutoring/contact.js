@@ -9,6 +9,39 @@ $(document).ready(function () {
         }
     });
 
+    /* MOBILE MENU TOGGLE */
+    function setupMobileMenu() {
+        const isMobile = window.innerWidth <= 992;
+
+        if (!isMobile) {
+            $('.navbar .menu').removeClass('active');
+            $('.menu-btn').remove();
+            return;
+        }
+
+        if (!$('.navbar .menu-btn').length) {
+            $('.navbar .max-width').append('<div class="menu-btn"><i class="fas fa-bars"></i></div>');
+        }
+
+        $('.menu-btn').off('click').on('click', function (e) {
+            e.stopPropagation();
+            $('.navbar .menu').toggleClass('active');
+        });
+
+        $(document).off('click.mobileMenu').on('click.mobileMenu', function (e) {
+            if (!$(e.target).closest('.navbar').length) {
+                $('.navbar .menu').removeClass('active');
+            }
+        });
+
+        $('.navbar .menu li a').off('click').on('click', function () {
+            $('.navbar .menu').removeClass('active');
+        });
+    }
+
+    setupMobileMenu();
+    $(window).on('resize', setupMobileMenu);
+
     /* PARALLAX HERO */
     const hero = $(".contact-hero");
     $(window).on("scroll", function () {

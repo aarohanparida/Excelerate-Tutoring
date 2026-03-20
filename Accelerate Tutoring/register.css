@@ -212,3 +212,30 @@ body {
     cursor: pointer;
     color: #446B50;
 }
+
+@media (max-width: 992px) {
+    .register-hero { height: 70vh; }
+    .hero-content h1 { font-size: 54px; }
+    .hero-content p { font-size: 20px; }
+
+    .register-section { padding: 80px 10px; }
+    .form-card { padding: 28px; }
+    .form-card h2 { margin-bottom: 30px; }
+    .form-group h3 { font-size: 18px; }
+    .field label { font-size: 15px; }
+    .field input, .field select { font-size: 15px; padding: 10px; }
+    .submit-btn { font-size: 18px; padding: 14px; }
+}
+
+@media (max-width: 576px) {
+    .register-hero { height: 58vh; }
+    .hero-content h1 { font-size: 40px; }
+    .hero-content p { font-size: 16px; }
+    .register-section { padding: 60px 8px; }
+    .form-card { padding: 20px; }
+    .form-group h3 { font-size: 16px; }
+    .field label { font-size: 14px; }
+    .field input, .field select { font-size: 14px; padding: 8px; }
+    .submit-btn { font-size: 16px; padding: 12px; }
+}
+

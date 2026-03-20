@@ -16,6 +16,39 @@ $(document).ready(function () {
         hero.css("background-position", `center ${scrollTop * 0.35}px`);
     });
 
+    /* MOBILE MENU TOGGLE */
+    function setupMobileMenu() {
+        const isMobile = window.innerWidth <= 992;
+
+        if (!isMobile) {
+            $('.navbar .menu').removeClass('active');
+            $('.menu-btn').remove();
+            return;
+        }
+
+        if (!$('.navbar .menu-btn').length) {
+            $('.navbar .max-width').append('<div class="menu-btn"><i class="fas fa-bars"></i></div>');
+        }
+
+        $('.menu-btn').off('click').on('click', function (e) {
+            e.stopPropagation();
+            $('.navbar .menu').toggleClass('active');
+        });
+
+        $(document).off('click.mobileMenu').on('click.mobileMenu', function (e) {
+            if (!$(e.target).closest('.navbar').length) {
+                $('.navbar .menu').removeClass('active');
+            }
+        });
+
+        $('.navbar .menu li a').off('click').on('click', function () {
+            $('.navbar .menu').removeClass('active');
+        });
+    }
+
+    setupMobileMenu();
+    $(window).on('resize', setupMobileMenu);
+
     /* POPUP */
     const popup = $("#register-popup");
     const closeBtn = $("#popup-close");
@@ -142,5 +175,28 @@ $(document).ready(function () {
             popup.hide();
         }
     });
+
+    /* ===================== REGISTER BUTTON NAVIGATION FOR NAVBAR/FOOTER ===================== */
+    function enforceRegisterLinks() {
+        const registerLinks = $(".navbar a, .footer a").filter(function () {
+            const txt = $(this).text().trim().toLowerCase();
+            return txt === "register" || txt.includes("register");
+        });
+
+        registerLinks.attr("href", "register.html");
+
+        registerLinks.on("click", function (e) {
+            e.preventDefault();
+            // Refresh to force top of register page when already on register.html
+            window.location.href = "register.html";
+        });
+    }
+
+    enforceRegisterLinks();
+
+    // Make sure any current register page loads from top
+    if (window.location.pathname.replace(/.*\//, "") === "register.html") {
+        window.scrollTo(0, 0);
+    }
 
 });

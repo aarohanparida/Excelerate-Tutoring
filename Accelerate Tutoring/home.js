@@ -9,6 +9,39 @@ $(document).ready(function () {
         }
     });
 
+    /* ===================== MOBILE MENU TOGGLE ===================== */
+    function setupMobileMenu() {
+        const isMobile = window.innerWidth <= 992;
+
+        if (!isMobile) {
+            $('.navbar .menu').removeClass('active');
+            $('.menu-btn').remove();
+            return;
+        }
+
+        if (!$('.navbar .menu-btn').length) {
+            $('.navbar .max-width').append('<div class="menu-btn"><i class="fas fa-bars"></i></div>');
+        }
+
+        $('.menu-btn').off('click').on('click', function (e) {
+            e.stopPropagation();
+            $('.navbar .menu').toggleClass('active');
+        });
+
+        $(document).off('click.mobileMenu').on('click.mobileMenu', function (e) {
+            if (!$(e.target).closest('.navbar').length) {
+                $('.navbar .menu').removeClass('active');
+            }
+        });
+
+        $('.navbar .menu li a').off('click').on('click', function () {
+            $('.navbar .menu').removeClass('active');
+        });
+    }
+
+    setupMobileMenu();
+    $(window).on('resize', setupMobileMenu);
+
     /* ===================== HOME HERO PARALLAX ===================== */
     const homeHero = $(".home");
     const heroContent = $(".home-content");
@@ -16,6 +49,8 @@ $(document).ready(function () {
 
     if (homeHero.length) {
         $(window).on("scroll", function () {
+            if (window.innerWidth <= 992) return;
+
             const scrollY = window.scrollY;
 
             // Background parallax
@@ -92,6 +127,23 @@ $(document).ready(function () {
 
         statsContent.css("opacity", progress);
     });
+
+    /* ===================== REGISTER BUTTON NAVIGATION FOR NAVBAR/FOOTER ===================== */
+    function enforceRegisterLinks() {
+        const registerLinks = $(".navbar a, .footer a").filter(function () {
+            const txt = $(this).text().trim().toLowerCase();
+            return txt === "register" || txt.includes("register");
+        });
+
+        registerLinks.attr("href", "register.html");
+
+        registerLinks.on("click", function (e) {
+            e.preventDefault();
+            window.location.href = "register.html";
+        });
+    }
+
+    enforceRegisterLinks();
 
     /* ===================== GENERIC PARALLAX FOR ANY SECTION ===================== */
     $(window).on("scroll", function () {
