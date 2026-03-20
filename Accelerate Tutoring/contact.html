@@ -17,10 +17,10 @@
 <nav class="navbar">
     <div class="max-width">
         <div class="logo">
-            <a href="home.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
+            <a href="index.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
         </div>
         <ul class="menu">
-            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="courses.html">Courses</a></li>
             <li><a href="tutors.html">Meet The Tutors</a></li>
             <li class="active"><a href="contact.html">Contact</a></li>
@@ -56,25 +56,28 @@
             </a>
         </div>
 
-        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="08608db3-9cfb-42b7-af5b-f369803334d9">
 
             <div class="field">
-                <label>Your Name</label>
-                <input type="text" name="name" required>
+                <label for="contactName">Your Name</label>
+                <input type="text" id="contactName" name="name" placeholder="e.g. John Smith" required>
+                <p class="error" id="nameError" aria-live="polite"></p>
             </div>
 
             <div class="field">
-                <label>Your Email</label>
-                <input type="email" name="email" required>
+                <label for="contactEmail">Your Email</label>
+                <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required>
+                <p class="error" id="emailError" aria-live="polite"></p>
             </div>
 
             <div class="field">
-                <label>Your Message</label>
-                <textarea name="message" required></textarea>
+                <label for="contactMessage">Your Message</label>
+                <textarea id="contactMessage" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+                <p class="error" id="messageError" aria-live="polite"></p>
             </div>
 
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
         </form>
     </div>
 </section>
@@ -94,7 +97,7 @@
             <ul>
                 <li>
                     <div class="logo">
-                        <a href="home.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
+                        <a href="index.html"><img src="logo.png" alt="Excelerate Tutoring Logo"></a>
                     </div>
                 </li>
                 <li>
@@ -105,7 +108,7 @@
 
         <div class="col">
             <ul>
-                <li><a href="home.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="courses.html">Courses</a></li>
                 <li><a href="tutors.html">Meet The Tutors</a></li>
                 <li><a href="contact.html">Contact</a></li>

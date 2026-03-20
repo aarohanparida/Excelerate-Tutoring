@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: lightsalmon;
+    background-color: #446B50;
 }
 
 .max-width {
@@ -98,10 +98,44 @@ body {
 }
 
 .menu-btn {
-    color: #fff;
-    font-size: 23px;
+    color: #446B50;
+    font-size: 26px;
     cursor: pointer;
     display: none;
+    background: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.navbar .menu {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.navbar .menu.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 10px;
+    width: calc(100vw - 20px);
+    max-width: 320px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    padding: 12px;
+    z-index: 10001;
+}
+
+.navbar .menu.active li {
+    display: block;
+    margin: 8px 0;
 }
 
 .home {
@@ -211,7 +245,7 @@ html, body {
 .about {
     padding: 100px 0;
     background-color: #010101;
-    color: #333;
+    color: lightsalmon;
     font-family: 'Donegal One', cursive;
 }
 
@@ -259,12 +293,12 @@ html, body {
 }
 
 .stats {
-    padding: 60px 0 120px; /* less top padding, same bottom padding */
+    padding: 60px 0 120px;
     background-color: #446B50;
     font-family: 'Donegal One', cursive;
     text-align: center;
-    position: relative;  /* allows z-index + parallax movement */
-    z-index: 5;          /* above About section */
+    position: relative;
+    z-index: 5;
 }
 
 .stats-content {
@@ -273,7 +307,7 @@ html, body {
     gap: 80px;
     flex-wrap: wrap;
     color: lightcoral;
-    will-change: transform; /* smooth GPU animation */
+    will-change: transform;
     opacity: 0;
     transition: opacity 0.25s linear;
 }
@@ -300,16 +334,76 @@ html, body {
 
 .about-btn {
     display: inline-block;
-    margin-bottom: 100px; /* adds space between button and next section */
+    margin-bottom: 100px;
 }
 
 .contact-cta {
     padding: 200px 0;
     padding-top: 200px;
-    background-color: lightsalmon;
+    background-color: #64A587;
+    background-image: none;
     font-family: 'Donegal One', cursive;
     text-align: center;
+    color: #ffffff;
+}
+
+
+/* generic parallax sections have fixed background and will be handled by JS */
+.parallax {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* why section styling */
+.why {
+    padding: 120px 0;
+    background-color: #446B50;
+    background-image: none;
+    color: #fff;
+    text-align: center;
+    font-family: 'Donegal One', cursive;
+}
+
+.why .text-1 {
+    font-size: 42px;
+    margin-bottom: 40px;
+    color: lightcoral;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    justify-items: center;
+    align-items: start;
+}
+
+.why-item i {
+    font-size: 48px;
+    margin-bottom: 16px;
     color: #64A587;
+}
+
+.why-item h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: lightcoral;
+}
+
+.why-item p {
+    font-size: 18px;
+    color: #fff;
+    max-width: 300px;
+}
+
+.scroll-fade-up {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.scroll-fade-up.show {
+    animation: fadeUp 0.9s ease-out forwards;
 }
 
 .contact-content h2 {
@@ -343,7 +437,7 @@ html, body {
     position: relative;
     width: 100%;
     background-image: linear-gradient(90deg, #fff, #64A587);
-    padding: 50px 5% 20px; /* bottom padding = wave height */
+    padding: 50px 5% 20px;
     text-align: center;
     color: #010101;
     font-family: 'Donegal One', cursive;
@@ -385,6 +479,13 @@ html, body {
 .about {
     position: relative;
     z-index: 1;
+    margin-top: 0; /* ensure no negative margin creeping up */
+}
+
+/* HOME sits above about so about can't peek through */
+.home {
+    position: relative;
+    z-index: 2;
 }
 
 /* STATS (green section coming over it) */
@@ -393,3 +494,96 @@ html, body {
     z-index: 5;
     will-change: transform;
 }
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 992px) {
+    .max-width { padding: 0 20px; }
+
+    /* Disable parallax on mobile — iOS/Android don't support background-attachment: fixed */
+    .parallax,
+    .home {
+        background-attachment: scroll !important;
+    }
+
+    /* Reset any JS-applied transforms on mobile */
+    .stats { transform: none !important; }
+
+    .navbar, .navbar.sticky {
+        background: transparent;
+        border-radius: 14px;
+        box-shadow: none;
+        padding: 8px 0;
+    }
+    .navbar .max-width { 
+        flex-wrap: wrap; 
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 !important;
+    }
+
+    .menu-btn {
+        display: flex;
+        position: static;
+        transform: none;
+        margin: 0 auto;
+        z-index: 10002;
+    }
+
+    .navbar .menu {
+        position: fixed;
+        top: calc(100% + 6px);
+        right: 8px;
+        left: 8px;
+    }
+
+    .navbar .menu { display: none; width: 100%; margin: 0; justify-content: flex-end; }
+    .navbar .menu li a { margin-left: 0; font-size: 16px; padding: 6px 8px; color: #446B50; }
+    .navbar .menu.active { right: 6px; left: auto; width: calc(100% - 12px); }
+
+    .navbar .logo img { opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+    .navbar .logo { width: 0; overflow: hidden; }
+
+    .home .max-width { margin: auto 0; }
+    .home .home-content .text-1 { font-size: 38px; }
+    .home .home-content .text-2 .logo-2 { width: 280px; }
+    .home .home-content .text-3 { font-size: 16px; }
+    .home .home-content a { font-size: 20px; padding: 10px 16px; }
+
+    .about { padding: 60px 0; }
+    .about-content .text-1 { font-size: 32px; }
+    .about-content p { font-size: 18px; }
+
+    .why { padding: 60px 0; }
+    .why .text-1 { font-size: 32px; }
+
+    .stats-content .number { font-size: 48px; }
+    .stats-content .label { font-size: 20px; }
+
+    .contact-cta { padding: 120px 0; }
+    .contact-content h2 { font-size: 36px; }
+    .contact-content p { font-size: 18px; }
+    .contact-btn { font-size: 18px; padding: 10px 20px;} 
+}
+
+@media (max-width: 576px) {
+    .navbar { top: 8px; width: calc(100% - 16px); }
+    .navbar .logo img { width: 180px; }
+    .home { height: 100vh; min-height: 100vh; background-attachment: scroll; }
+    .stats { transform: none !important; } /* reset any JS-applied translateY */
+    .home .home-content .text-1 { font-size: 28px; }
+    .home .home-content .text-2 .logo-2 { width: 220px; }
+    .home .home-content .text-3 { font-size: 14px; }
+    .graphic, .hero-graphic { display: none !important; }
+    .stats-content { gap: 20px; }
+    .footer .row { flex-direction: column; align-items: center; }
+    .footer .col { margin: 10px 0; }
+    .register-section { padding: 80px 12px; }
+    .form-card { padding: 30px; }
+    .register-hero .hero-content h1 { font-size: 46px; }
+    .register-hero .hero-content p { font-size: 18px; }
+}
+
+/* REMOVED the broken @media (max-width: 768px) block that set .home to position:fixed —
+   that was causing the layout to break on mobile. */

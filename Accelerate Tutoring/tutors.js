@@ -44,7 +44,7 @@ $(document).ready(function () {
     $(window).on('resize', setupMobileMenu);
 
     /* PARALLAX HERO — disabled on mobile */
-    const hero = $(".courses-hero");
+    const hero = $(".tutors-hero");
     $(window).on("scroll", function () {
         if (window.innerWidth <= 992) return; // disabled on mobile
         const scrollTop = window.scrollY;
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
     /* FADE-IN + FADE-OUT ANIMATION */
     function animateCards() {
-        $(".course-card").each(function () {
+        $(".tutor-card").each(function () {
             const rect = this.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
@@ -69,9 +69,9 @@ $(document).ready(function () {
     animateCards();
 
     /* CLICK TO EXPAND */
-    $(".course-card").on("click", function () {
-        const details = $(this).find(".course-details");
-        $(".course-details").not(details).removeClass("open");
+    $(".tutor-card").on("click", function () {
+        const details = $(this).find(".tutor-details");
+        $(".tutor-details").not(details).removeClass("open");
         details.toggleClass("open");
     });
 
